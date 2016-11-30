@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ScheduleMVC_Update.Models.ScheduleMainSet>
+
+@{
+    ViewBag.Title = "Список всех пар";
+}
+
+<h2>Список всех пар</h2>
+<p>
+    @Html.ActionLink("Создать новую пару", "Create") |
+    <a href="http://scheduleeacu.azurewebsites.net/disciplines">Страница дисциплин</a> |
+    <a href="http://scheduleeacu.azurewebsites.net/lecturers">Страница преподавателей</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuditorySet.AuditoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisciplineSet.TitleDiscipline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupSet.GroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupSet.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LecturerSet.LecturerFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PairSet.PairStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PairSet.PairEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PairSet.PairNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.OrderByDescending(x => x.Date))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuditorySet.AuditoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisciplineSet.TitleDiscipline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupSet.GroupName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupSet.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecturerSet.LecturerFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PairSet.PairStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PairSet.PairEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PairSet.PairNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td class="col-lg-3">
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.ScheduleId }) |
+                    @Html.ActionLink("Подробнее", "Details", new { id = item.ScheduleId }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.ScheduleId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

@@ -1,0 +1,132 @@
+﻿@model ScheduleMVC_Update.Models.ScheduleMainSet
+
+@{
+    ViewBag.Title = "Создать пару";
+}
+
+<h2>Создание пары</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DisciplineDisciplineId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DisciplineDisciplineId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DisciplineDisciplineId, "", new { @class = "text-danger" })
+                <p>*Создать новую <a href="http://scheduleeacu.azurewebsites.net/disciplines">дисциплину</a></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LecturerLecturerId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10 ui-widget">
+                @Html.DropDownList("LecturerLecturerId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LecturerLecturerId, "", new { @class = "text-danger" })
+                <p>*Создать нового <a href="http://scheduleeacu.azurewebsites.net/lecturers">преподавателя</a></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GroupSet.GroupName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GroupSet.GroupName, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите группу..." } })
+                @Html.ValidationMessageFor(model => model.GroupGroupId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GroupSet.DepartmentName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GroupSet.DepartmentName, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите факультет...", list = "departament_list" } })
+                <datalist id="departament_list">
+                    <option value="Технологии управления в сфере культуры">ТУ</option>
+                    <option value="Журналистика в области культуры">КЖ</option>
+                    <option value="Визуальные коммуникации">ВК</option>
+                    <option value="Танец и современная пластическая культура">ТН</option>
+                    <option value="Прикладная информатика в социально-культурной сфере">ПИ</option>
+                </datalist>
+                @Html.ValidationMessageFor(model => model.GroupSet.DepartmentName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AuditoryAuditoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AuditorySet.AuditoryName, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите аудиторию..." } })
+                @Html.ValidationMessageFor(model => model.AuditoryAuditoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PairSet.PairNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PairSet.PairNumber, new { htmlAttributes = new { @class = "form-control", type = "number", placeholder = "Введите номер пары...", list = "pair_list" } })
+                <datalist id="pair_list">
+                    <option value="1">9:00 - 10:35</option>
+                    <option value="2">10:45 - 12:20</option>
+                    <option value="3">13:00 - 14:35</option>
+                    <option value="4">14:45 - 16:20</option>
+                    <option value="5">16:30 - 18:05</option>
+                </datalist>
+                @Html.ValidationMessageFor(model => model.PairSet.PairNumber, "", new { @class = "text-danger" })
+                <p>*Последние колонки оставить <abbr title="Две последние колонки можно оставить пустыми если время пары - стандартное; 1 пара: 9:00 - 10:35 и т.д. ">пустыми</abbr></p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PairSet.PairStart, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PairSet.PairStart, new { htmlAttributes = new { @class = "form-control", type = "time", placeholder = "Введите начало пары..." } })
+                @Html.ValidationMessageFor(model => model.PairSet.PairStart, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PairSet.PairEnd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PairSet.PairEnd, new { htmlAttributes = new { @class = "form-control", type = "time", placeholder = "Введите конец пары..." } })
+                @Html.ValidationMessageFor(model => model.PairSet.PairEnd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Создать" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Вернуться к списку ", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("[data-autocomplete-source]").each(function () {
+            var target = $(this);
+            target.autocomplete({
+                source: target.attr("data-autocomplete-source")
+            });
+        });
+    });
+</script>

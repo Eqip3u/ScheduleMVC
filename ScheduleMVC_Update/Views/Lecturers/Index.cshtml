@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ScheduleMVC_Update.Models.LecturerSet>
+
+@{
+    ViewBag.Title = "Преподаватели";
+}
+
+<h2>Преподаватели</h2>
+
+<p>
+    @Html.ActionLink("Добавить нового преподавателя", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LecturerFullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.OrderBy(x => x.LecturerFullName)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LecturerFullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id=item.LecturerId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.LecturerId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    <a href="http://scheduleeacu.azurewebsites.net/schedule">Вернуться к списку пар</a>
+</div>

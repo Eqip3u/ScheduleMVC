@@ -1,0 +1,26 @@
+﻿@model ScheduleMVC_Update.Models.DisciplineSet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DisciplineSet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TitleDiscipline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TitleDiscipline)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DisciplineId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
