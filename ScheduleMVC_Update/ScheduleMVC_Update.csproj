@@ -80,6 +80,18 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -91,6 +103,30 @@
     </Reference>
     <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http" />
@@ -157,9 +193,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\images\favicon-32x32.png" />
+    <Content Include="Content\images\icon.png" />
+    <Content Include="Content\images\icon_w.png" />
+    <Content Include="Content\Style.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -203,49 +244,70 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap-formhelpers-phone.js" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\bootstrap-formhelpers-phone.js" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
-    <Content Include="Scripts\jquery-1.12.4.js" />
-    <Content Include="Scripts\jquery-1.12.4.min.js" />
-    <Content Include="Scripts\jquery-1.12.4.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\DisciplinesController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\APanel\Panels\AuditorysController.cs" />
+    <Compile Include="Controllers\APanel\Panels\DisciplinesController.cs" />
+    <Compile Include="Controllers\APanel\Panels\GroupsController.cs" />
+    <Compile Include="Controllers\APanel\Panels\PairsController.cs" />
+    <Compile Include="Controllers\APanel\ScheduleDayOfWeekController.cs" />
+    <Compile Include="Controllers\APanel\ScheduleGroupAndLecturerController.cs" />
+    <Compile Include="Controllers\APanel\ScheduleGroupsController.cs" />
+    <Compile Include="Controllers\APanel\ScheduleLecturersController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LecturerController.cs" />
-    <Compile Include="Controllers\LecturersController.cs" />
-    <Compile Include="Controllers\ScheduleController.cs" />
+    <Compile Include="Controllers\APanel\Panels\LecturersController.cs" />
+    <Compile Include="Controllers\APanel\ScheduleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611241701143_1.cs" />
-    <Compile Include="Migrations\201611241701143_1.Designer.cs">
-      <DependentUpon>201611241701143_1.cs</DependentUpon>
+    <Compile Include="Migrations\201612091923327_1.cs" />
+    <Compile Include="Migrations\201612091923327_1.Designer.cs">
+      <DependentUpon>201612091923327_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationContext.cs" />
+    <Compile Include="Models\RLModel\ApplicationUser.cs" />
+    <Compile Include="Models\RLModel\ApplicationUserManager.cs" />
+    <Compile Include="Models\RLModel\LoginModel.cs" />
     <Compile Include="Models\ModelSchedule\AuditorySet.cs" />
     <Compile Include="Models\ban\ContextInitializer.cs" />
     <Compile Include="Models\ModelSchedule\DisciplineSet.cs" />
     <Compile Include="Models\ModelSchedule\GroupSet.cs" />
     <Compile Include="Models\ModelSchedule\LecturerSet.cs" />
     <Compile Include="Models\ModelSchedule\PairSet.cs" />
+    <Compile Include="Models\RLModel\RegisterModel.cs" />
     <Compile Include="Models\ScheduleContext.cs" />
     <Compile Include="Models\ModelSchedule\ScheduleMainSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -274,9 +336,45 @@
     <Content Include="Views\Lecturers\Index.cshtml" />
     <Content Include="Views\Disciplines\Create.cshtml" />
     <Content Include="Views\Disciplines\Delete.cshtml" />
-    <Content Include="Views\Disciplines\Details.cshtml" />
     <Content Include="Views\Disciplines\Edit.cshtml" />
     <Content Include="Views\Disciplines\Index.cshtml" />
+    <Content Include="Views\Auditorys\Create.cshtml" />
+    <Content Include="Views\Auditorys\Delete.cshtml" />
+    <Content Include="Views\Auditorys\Edit.cshtml" />
+    <Content Include="Views\Auditorys\Index.cshtml" />
+    <Content Include="Views\Pairs\Create.cshtml" />
+    <Content Include="Views\Pairs\Delete.cshtml" />
+    <Content Include="Views\Pairs\Edit.cshtml" />
+    <Content Include="Views\Pairs\Index.cshtml" />
+    <Content Include="Views\Groups\Create.cshtml" />
+    <Content Include="Views\Groups\Delete.cshtml" />
+    <Content Include="Views\Groups\Details.cshtml" />
+    <Content Include="Views\Groups\Edit.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
+    <Content Include="Views\Lecturer\Edit.cshtml" />
+    <Content Include="Views\Group\Details.cshtml" />
+    <Content Include="Views\Lecturer\Details.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\ScheduleGroups\Index.cshtml" />
+    <Content Include="Views\ScheduleGroups\Delete.cshtml" />
+    <Content Include="Views\ScheduleGroups\Details.cshtml" />
+    <Content Include="Views\ScheduleGroups\Edit.cshtml" />
+    <Content Include="Views\ScheduleLecturers\Delete.cshtml" />
+    <Content Include="Views\ScheduleLecturers\Details.cshtml" />
+    <Content Include="Views\ScheduleLecturers\Edit.cshtml" />
+    <Content Include="Views\ScheduleLecturers\Index.cshtml" />
+    <Content Include="Views\ScheduleGroupAndLecturer\Delete.cshtml" />
+    <Content Include="Views\ScheduleGroupAndLecturer\Details.cshtml" />
+    <Content Include="Views\ScheduleGroupAndLecturer\Edit.cshtml" />
+    <Content Include="Views\ScheduleGroupAndLecturer\Index.cshtml" />
+    <Content Include="Views\ScheduleDayOfWeek\Delete.cshtml" />
+    <Content Include="Views\ScheduleDayOfWeek\Details.cshtml" />
+    <Content Include="Views\ScheduleDayOfWeek\Edit.cshtml" />
+    <Content Include="Views\ScheduleDayOfWeek\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -294,8 +392,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611241701143_1.resx">
-      <DependentUpon>201611241701143_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612091923327_1.resx">
+      <DependentUpon>201612091923327_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

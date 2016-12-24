@@ -1,0 +1,36 @@
+﻿@model ScheduleMVC_Update.Models.AuditorySet
+
+@{
+    ViewBag.Title = "Изменить";
+}
+
+<h2>Изменить аудиторию</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AuditoryId)
+
+        <div class="form-group">
+            <div class="col-md-10 input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                @Html.EditorFor(model => model.AuditoryName, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите номер аудитории..." } })
+                @Html.ValidationMessageFor(model => model.AuditoryName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Вернуться к списку аудитории", "Index")
+</div>

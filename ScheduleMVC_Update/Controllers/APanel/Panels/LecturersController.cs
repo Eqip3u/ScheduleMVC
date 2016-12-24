@@ -11,107 +11,112 @@ using ScheduleMVC_Update.Models;
 
 namespace ScheduleMVC_Update.Controllers
 {
-    public class DisciplinesController : Controller
+    public class LecturersController : Controller
     {
         private ScheduleContext db = new ScheduleContext();
 
-        // GET: Disciplines
+        // GET: Lecturers
+        [Authorize]
         public async Task<ActionResult> Index()
         {
-            return View(await db.DisciplineSet.ToListAsync());
+            return View(await db.LecturerSet.ToListAsync());
         }
 
-        // GET: Disciplines/Details/5
+        // GET: Lecturers/Details/5
+        [Authorize]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DisciplineSet disciplineSet = await db.DisciplineSet.FindAsync(id);
-            if (disciplineSet == null)
+            LecturerSet lecturerSet = await db.LecturerSet.FindAsync(id);
+            if (lecturerSet == null)
             {
                 return HttpNotFound();
             }
-            return View(disciplineSet);
+            return View(lecturerSet);
         }
 
-        // GET: Disciplines/Create
+        // GET: Lecturers/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Disciplines/Create
+        // POST: Lecturers/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "DisciplineId,TitleDiscipline")] DisciplineSet disciplineSet)
+        public async Task<ActionResult> Create(LecturerSet lecturerSet)
         {
             if (ModelState.IsValid)
             {
-                db.DisciplineSet.Add(disciplineSet);
+                db.LecturerSet.Add(lecturerSet);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(disciplineSet);
+            return View(lecturerSet);
         }
 
-        // GET: Disciplines/Edit/5
+        // GET: Lecturers/Edit/5
+        [Authorize]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DisciplineSet disciplineSet = await db.DisciplineSet.FindAsync(id);
-            if (disciplineSet == null)
+            LecturerSet lecturerSet = await db.LecturerSet.FindAsync(id);
+            if (lecturerSet == null)
             {
                 return HttpNotFound();
             }
-            return View(disciplineSet);
+            return View(lecturerSet);
         }
 
-        // POST: Disciplines/Edit/5
+        // POST: Lecturers/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "DisciplineId,TitleDiscipline")] DisciplineSet disciplineSet)
+        public async Task<ActionResult> Edit(LecturerSet lecturerSet)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(disciplineSet).State = EntityState.Modified;
+                db.Entry(lecturerSet).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(disciplineSet);
+            return View(lecturerSet);
         }
 
-        // GET: Disciplines/Delete/5
+        // GET: Lecturers/Delete/5
+        [Authorize]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DisciplineSet disciplineSet = await db.DisciplineSet.FindAsync(id);
-            if (disciplineSet == null)
+            LecturerSet lecturerSet = await db.LecturerSet.FindAsync(id);
+            if (lecturerSet == null)
             {
                 return HttpNotFound();
             }
-            return View(disciplineSet);
+            return View(lecturerSet);
         }
 
-        // POST: Disciplines/Delete/5
+        // POST: Lecturers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            DisciplineSet disciplineSet = await db.DisciplineSet.FindAsync(id);
-            db.DisciplineSet.Remove(disciplineSet);
+            LecturerSet lecturerSet = await db.LecturerSet.FindAsync(id);
+            db.LecturerSet.Remove(lecturerSet);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

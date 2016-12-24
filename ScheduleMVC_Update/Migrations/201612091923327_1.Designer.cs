@@ -13,7 +13,7 @@ namespace ScheduleMVC_Update.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611241701143_1"; }
+            get { return "201612091923327_1"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,35 +1,34 @@
 ﻿@model ScheduleMVC_Update.Models.DisciplineSet
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Создание пары";
 }
 
-<h2>Create</h2>
+<h2>Создание пары</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>DisciplineSet</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.TitleDiscipline, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TitleDiscipline, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-10 input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+                @Html.EditorFor(model => model.TitleDiscipline, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите название дисциплины..." } })
                 @Html.ValidationMessageFor(model => model.TitleDiscipline, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-10">
+                <input type="submit" value="Создать" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
+<hr />
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться к списку пар", "Index")
 </div>

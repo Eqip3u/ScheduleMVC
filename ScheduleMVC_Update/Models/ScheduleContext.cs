@@ -27,31 +27,36 @@ namespace ScheduleMVC_Update.Models
                 .HasMany(e => e.ScheduleMainSet)
                 .WithRequired(e => e.AuditorySet)
                 .HasForeignKey(e => e.AuditoryAuditoryId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<DisciplineSet>()
                 .HasMany(e => e.ScheduleMainSet)
                 .WithRequired(e => e.DisciplineSet)
                 .HasForeignKey(e => e.DisciplineDisciplineId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<GroupSet>()
                 .HasMany(e => e.ScheduleMainSet)
                 .WithRequired(e => e.GroupSet)
                 .HasForeignKey(e => e.GroupGroupId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true); // хрен знает что это такое, но должно стоять тру
 
             modelBuilder.Entity<LecturerSet>()
                 .HasMany(e => e.ScheduleMainSet)
                 .WithRequired(e => e.LecturerSet)
                 .HasForeignKey(e => e.LecturerLecturerId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<PairSet>()
                 .HasMany(e => e.ScheduleMainSet)
                 .WithRequired(e => e.PairSet)
                 .HasForeignKey(e => e.PairPairId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
+        }
+
+        public static implicit operator string(ScheduleContext v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

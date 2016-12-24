@@ -6,43 +6,51 @@
 
 <h2>Преподаватели</h2>
 
+<a href="@Url.Action("Index", "Schedule")" class="btn btn-default">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>  Вернуться на главную
+</a>
+
 <p>
-    @Html.ActionLink("Добавить нового преподавателя", "Create")
+    <br />
+    <br />
+    @Html.ActionLink("Добавить нового преподавателя", "Create", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LecturerFullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model.OrderBy(x => x.LecturerFullName)) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LecturerFullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.ActionLink("Изменить", "Edit", new { id=item.LecturerId }) |
-            @Html.ActionLink("Удалить", "Delete", new { id=item.LecturerId })
-        </td>
-    </tr>
-}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LecturerFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                Функции
+            </th>
+        </tr>
 
-</table>
-
-<div>
-    <a href="http://scheduleeacu.azurewebsites.net/schedule">Вернуться к списку пар</a>
+        @foreach (var item in Model.OrderBy(x => x.LecturerFullName))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LecturerFullName)
+                </td>
+                <td>
+                    <a href="mailto:@Html.DisplayFor(modelItem => item.Email)">@Html.DisplayFor(modelItem => item.Email)</a>
+                </td>
+                <td>
+                    <a href="tel:@Html.DisplayFor(modelItem => item.Phone)">@Html.DisplayFor(modelItem => item.Phone)</a>
+                </td>
+                <td>
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.LecturerId }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.LecturerId })
+                </td>
+            </tr>
+        }
+        
+    </table>
 </div>

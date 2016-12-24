@@ -5,27 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Расписание ЕАСИ</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Style.css" rel="stylesheet" type="text/css" />
     <link href='@Url.Content("~/Content/themes/base/all.css")' rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link rel="icon" type="image/png" sizes="60x60" href="~/Content/images/icon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap-select.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+
             <div class="navbar-header">
-                @Html.ActionLink("Расписание ЕАСИ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href='@Url.Action("Index", "Home")'>
+                    <img style="height: 38px;" src='@Url.Content("~/Content/images/icon_w.png")' /> Расписание ЕАСИ
+                </a>
             </div>
+
+            <div class="navbar-collapse collapse login" id="myNavbar">
+                @Html.Partial("_LoginPartial")
+            </div>
+
         </div>
     </div>
 
-    <div class="container body-content">
+    <div class="container body-content mainDiv">
+        <br />
         @RenderBody()
         <footer>
-            <p>
-
+            <p class="text-right">
+                <br />
+                <a href="https://vk.com/superromka">vk</a> |
+                +7-912-228-51-04
             </p>
         </footer>
     </div>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+
 </body>
 </html>

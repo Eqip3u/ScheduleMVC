@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ScheduleMVC_Update.Models.AuditorySet>
+
+@{
+    ViewBag.Title = "Аудитории";
+}
+
+<h2>Список всех аудитории</h2>
+
+<a href="@Url.Action("Index", "Schedule")" class="btn btn-default">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>  Вернуться на главную
+</a>
+
+<p>
+    <br />
+    <br />
+    @Html.ActionLink("Добавить новую аудиторию", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-hover" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AuditoryName)
+        </th>
+        <th>
+            Функции
+        </th>
+    </tr>
+
+@foreach (var item in Model.OrderBy(x => x.AuditoryName)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuditoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id=item.AuditoryId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.AuditoryId })
+        </td>
+    </tr>
+}
+
+</table>

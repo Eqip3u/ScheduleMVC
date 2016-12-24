@@ -1,0 +1,84 @@
+﻿@model ScheduleMVC_Update.Models.ScheduleMainSet
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h4 class="text-center">Подробно о паре</h4>
+    </div>
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AuditorySet.AuditoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AuditorySet.AuditoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DisciplineSet.TitleDiscipline)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DisciplineSet.TitleDiscipline)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LecturerSet.LecturerFullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LecturerSet.LecturerFullName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LecturerSet.Phone)
+            </dt>
+
+            <dd>
+                <a href="tel:@Html.DisplayFor(model => model.LecturerSet.Phone)">@Html.DisplayFor(model => model.LecturerSet.Phone)</a>
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LecturerSet.Email)
+            </dt>
+
+            <dd>
+                <a href="mailto:@Html.DisplayFor(model => model.LecturerSet.Email)">@Html.DisplayFor(model => model.LecturerSet.Email)</a>
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PairSet.PairStart)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PairSet.PairStart)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PairSet.PairEnd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PairSet.PairEnd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PairSet.PairNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PairSet.PairNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Annotation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Annotation)
+            </dd>
+        </dl>
+    </div>
+</div>
+

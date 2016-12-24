@@ -13,12 +13,6 @@
         [Key]
         public int ScheduleId { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [DisplayName("Дата")]
-        [DataType(DataType.Date)]
-        [Required(ErrorMessage = "Введите дату")]
-        public DateTime Date { get; set; }
-
         [DisplayName("Дисциплина")]
         public int DisciplineDisciplineId { get; set; }
 
@@ -34,6 +28,11 @@
         [DisplayName("Пара")]
         public int PairPairId { get; set; }
 
+        [DisplayName("Заметка")]
+        public string Annotation { get; set; }
+
+        [DisplayName("День недели")]
+        public string DaysOfWeek { get; set; }
 
 
         [ForeignKey("AuditoryAuditoryId")]

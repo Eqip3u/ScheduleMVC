@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Вернуться на страницу расписания", "Index", "Schedule", routeValues: null, htmlAttributes: new { title = "Вернуться на страницу расписания" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-log-in"></span> Выйти </a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a id="loginLink" href="@Url.Action("Login", "Account")">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>  Sign In
+            </a>
+        </li>
+    </ul>
+}

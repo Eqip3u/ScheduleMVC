@@ -1,0 +1,46 @@
+﻿@model ScheduleMVC_Update.Models.PairSet
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PairNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PairNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PairStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PairStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PairEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PairEnd)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку", "Index")
+        </div>
+    }
+</div>

@@ -39,8 +39,13 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Вернуться к списку преподавателей", "Index")
+            <input type="submit" value="Удалить" class="btn btn-danger" />
         </div>
     }
+</div>
+
+<hr />
+
+<div>
+    @Html.ActionLink("Вернуться к списку преподавателей", "Index")
 </div>

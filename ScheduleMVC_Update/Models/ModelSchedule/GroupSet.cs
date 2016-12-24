@@ -27,6 +27,15 @@
         //[Required]
         public string DepartmentName { get; set; }
 
+        [DisplayName("Староста")]
+        public string MonitorOfTheTeam { get; set; }
+
+        [DisplayName("Телефон старосты")]
+        public string MonitorTel { get; set; }
+
+        [DisplayName("Email старосты")]
+        public string MonitorEmail { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ScheduleMainSet> ScheduleMainSet { get; set; }
     }

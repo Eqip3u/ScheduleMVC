@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ScheduleMVC_Update.Models.PairSet>
+
+@{
+    ViewBag.Title = "Время";
+}
+
+<h2>Список времени для пар</h2>
+
+<a href="@Url.Action("Index", "Schedule")" class="btn btn-default">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>  Вернуться на главную
+</a>
+
+<p>
+    <br />
+    <br />
+    @Html.ActionLink("Создать новое время", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PairNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PairStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PairEnd)
+        </th>
+        <th>
+            Функции
+        </th>
+    </tr>
+
+@foreach (var item in Model.OrderBy(x => x.PairNumber)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PairNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PairStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PairEnd)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.PairId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.PairId })
+        </td>
+    </tr>
+}
+
+</table>

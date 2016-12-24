@@ -1,0 +1,121 @@
+﻿@model ScheduleMVC_Update.Models.ScheduleMainSet
+
+@{
+    ViewBag.Title = "Изменить";
+}
+
+
+
+<h2>Изменить</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ScheduleId)
+
+        <div class="invisible">
+            <a onclick="hidetxt('list'); return false;" href="#" rel="nofollow" style="padding-left: 100px">Изменить информацию о паре</a>
+            <div style="display:none;" id="list">
+                <br />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DisciplineDisciplineId, "Дисциплина", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("DisciplineDisciplineId", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.DisciplineDisciplineId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LecturerLecturerId, "Преподаватель", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("LecturerLecturerId", null, htmlAttributes: new { @class = "form-control", @readonly = "true" })
+                        @Html.ValidationMessageFor(model => model.LecturerLecturerId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GroupGroupId, "Номер группы", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("GroupGroupId", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.GroupGroupId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AuditoryAuditoryId, "Аудитория", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("AuditoryAuditoryId", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.AuditoryAuditoryId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PairPairId, "Номер пары", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("PairPairId", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.PairPairId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PairPairId, "Начало пары", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PairSet.PairStart, new { htmlAttributes = new { @class = "form-control", type = "time", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.PairPairId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PairPairId, "Конец пары", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PairSet.PairEnd, new { htmlAttributes = new { @class = "form-control", type = "time", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.PairPairId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DaysOfWeek, "День недели", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DaysOfWeek, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DaysOfWeek, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Annotation, "Аннотация", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Annotation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Annotation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    var show;
+    function hidetxt(type) {
+        param = document.getElementById(type);
+        if (param.style.display == "none") {
+            if (show) show.style.display = "none";
+            param.style.display = "block";
+            show = param;
+        } else param.style.display = "none"
+    }
+</script>

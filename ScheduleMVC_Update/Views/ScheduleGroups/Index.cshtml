@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ScheduleMVC_Update.Models.ScheduleMainSet>
+
+@{
+    ViewBag.Title = "Список пар для группы";
+    var listIsGroup = 0;
+    var listIsLecturer = 10000;
+}
+
+<h2 class="text-center">Список пар для группы "@ViewBag.Group"</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuditorySet.AuditoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisciplineSet.TitleDiscipline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupSet.GroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LecturerSet.LecturerFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PairSet.PairNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DaysOfWeek)
+            </th>
+            <th>
+                Функции
+            </th>
+        </tr>
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuditorySet.AuditoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisciplineSet.TitleDiscipline)
+                </td>
+                <td>
+                    <div>
+                        <a onclick="hidetxt('@listIsGroup'); return false;" href="#" rel="nofollow">@Html.DisplayFor(modelItem => item.GroupSet.GroupName)</a>
+                        <div style="display:none;" id="@listIsGroup">
+                            <p>Староста: @Html.DisplayFor(modelItem => item.GroupSet.MonitorOfTheTeam)</p>
+                            <p>Телефон:<a href="tel:@Html.DisplayFor(modelItem => item.GroupSet.MonitorTel)">@Html.DisplayFor(modelItem => item.GroupSet.MonitorTel)</a></p>
+                            <p>Email:<a href="mailto:@Html.DisplayFor(modelItem => item.GroupSet.MonitorEmail)">@Html.DisplayFor(modelItem => item.GroupSet.MonitorEmail)</a></p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <a onclick="hidetxt('@listIsLecturer'); return false;" href="#" rel="nofollow">@Html.DisplayFor(modelItem => item.LecturerSet.LecturerFullName)</a>
+                        <div style="display:none;" id="@listIsLecturer">
+                            <p>Телефон:<a href="tel:@Html.DisplayFor(modelItem => item.LecturerSet.Phone)">@Html.DisplayFor(modelItem => item.LecturerSet.Phone)</a></p>
+                            <p>Email:<a href="mailto:@Html.DisplayFor(modelItem => item.LecturerSet.Email)">@Html.DisplayFor(modelItem => item.LecturerSet.Email)</a></p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PairSet.PairNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DaysOfWeek)
+                </td>
+                <td class="col-lg-3">
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.ScheduleId }) |
+                    @Html.ActionLink("Подробнее", "Details", new { id = item.ScheduleId }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.ScheduleId })
+                </td>
+            </tr>
+            listIsGroup++;
+            listIsLecturer++;
+        }
+
+    </table>
+</div>
+
+<script>
+    var show;
+    function hidetxt(type) {
+        param = document.getElementById(type);
+        if (param.style.display == "none") {
+            if (show) show.style.display = "none";
+            param.style.display = "block";
+            show = param;
+        } else param.style.display = "none"
+    }
+</script>

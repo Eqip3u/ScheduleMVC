@@ -2,42 +2,58 @@
 
 @{
     ViewBag.Title = "Список пар";
+    var list = 0;
+    string[] arrayDays = { "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота" };
 }
 
-<br />
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
 
-@for (int i = 0; i < 14; i++)
+
+<h3 class="text-center">Расписание для преподавателя "@ViewBag.Name"</h3>
+<hr />
+<h4 class="text-center">Четная неделя</h4>
+@for (int i = 0; i < 6; i++)
 {
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
 
         <div class="panel-heading panel-heading-custom">
-            <h3 class="panel-title">@DateTime.Today.AddDays(i).DayOfWeek <br /> @DateTime.Today.AddDays(i).ToString("dd.MM.yyyy")</h3>
+            <h3 class="panel-title">@arrayDays[i]</h3>
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered  table-hover">
                 <tr>
                     <th class="col-sm-2 ">
                         Время пары
                     </th>
-                    <th class="col-sm-4">
+                    <th class="col-sm-3">
                         @Html.DisplayNameFor(model => model.DisciplineSet.TitleDiscipline)
                     </th>
                     <th class="col-sm-1">
                         @Html.DisplayNameFor(model => model.AuditorySet.AuditoryName)
                     </th>
-                    <th class="col-sm-4">
+                    <th class="col-sm-2">
                         @Html.DisplayNameFor(model => model.GroupSet.GroupName)
+                    </th>
+                    <th class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Annotation)
                     </th>
                 </tr>
 
-                @foreach (var item in Model.Where(x => x.Date.Day == DateTime.Today.AddDays(i).Day).OrderBy(x => x.PairSet.PairNumber))
+                @foreach (var item in Model.Where(x => x.DaysOfWeek == (i + 1).ToString()).OrderBy(x => x.PairSet.PairNumber))
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.PairSet.PairStart)
+                            <sup>
+                                @Html.DisplayFor(modelItem => item.PairSet.PairNumber)
+                            </sup>
+                            <a href="@Url.Action("Details", "Lecturer", new { id = item.ScheduleId })" class="detailsID">
+                                (@Html.DisplayFor(modelItem => item.PairSet.PairStart)
                                 -
-                            @Html.DisplayFor(modelItem => item.PairSet.PairEnd)
+                                @Html.DisplayFor(modelItem => item.PairSet.PairEnd))
+                            </a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DisciplineSet.TitleDiscipline)
@@ -46,13 +62,122 @@
                             @Html.DisplayFor(modelItem => item.AuditorySet.AuditoryName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.GroupSet.GroupName)
+                            <div>
+                                <a onclick="hidetxt('@list'); return false;" href="#" rel="nofollow">@Html.DisplayFor(modelItem => item.GroupSet.GroupName)</a>
+                                <div style="display:none;" id="@list">
+                                    <p>Староста: @Html.DisplayFor(modelItem => item.GroupSet.MonitorOfTheTeam)</p>
+                                    <p>Телефон:<a href="tel:@Html.DisplayFor(modelItem => item.GroupSet.MonitorTel)">@Html.DisplayFor(modelItem => item.GroupSet.MonitorTel)</a></p>
+                                    <p>Email:<a href="mailto:@Html.DisplayFor(modelItem => item.GroupSet.MonitorEmail)">@Html.DisplayFor(modelItem => item.GroupSet.MonitorEmail)</a></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Annotation) |
+                            @Html.ActionLink("Изменить", "Edit", new { id = item.ScheduleId })
                         </td>
                     </tr>
+                    list++;
                 }
             </table>
         </div>
 
     </div>
-            <hr />
 }
+
+<br />
+<hr />
+<h4 class="text-center">Нечетная неделя</h4>
+@for (int i = 0; i > -6; i--)
+{
+    <div class="panel panel-primary">
+
+        <div class="panel-heading panel-heading-custom">
+            <h3 class="panel-title">@arrayDays[i*(-1)]</h3>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered  table-hover">
+                <tr>
+                    <th class="col-sm-2 ">
+                        Время пары
+                    </th>
+                    <th class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.DisciplineSet.TitleDiscipline)
+                    </th>
+                    <th class="col-sm-1">
+                        @Html.DisplayNameFor(model => model.AuditorySet.AuditoryName)
+                    </th>
+                    <th class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.GroupSet.GroupName)
+                    </th>
+                    <th class="col-sm-4">
+                        @Html.DisplayNameFor(model => model.Annotation)
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.Where(x => x.DaysOfWeek == (i + 1).ToString()).OrderBy(x => x.PairSet.PairNumber))
+                {
+                    <tr>
+                        <td>
+                            <sup>
+                                @Html.DisplayFor(modelItem => item.PairSet.PairNumber)
+                            </sup>
+                            <a href="@Url.Action("Details", "Lecturer", new { id = item.ScheduleId })" class="detailsID">
+                                (@Html.DisplayFor(modelItem => item.PairSet.PairStart)
+                                -
+                                @Html.DisplayFor(modelItem => item.PairSet.PairEnd))
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisciplineSet.TitleDiscipline)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AuditorySet.AuditoryName)
+                        </td>
+                        <td>
+                            <div>
+                                <a onclick="hidetxt('@list'); return false;" href="#" rel="nofollow">@Html.DisplayFor(modelItem => item.GroupSet.GroupName)</a>
+                                <div style="display:none;" id="@list">
+                                    <p>Староста: @Html.DisplayFor(modelItem => item.GroupSet.MonitorOfTheTeam)</p>
+                                    <p>Телефон:<a href="tel:@Html.DisplayFor(modelItem => item.GroupSet.MonitorTel)">@Html.DisplayFor(modelItem => item.GroupSet.MonitorTel)</a></p>
+                                    <p>Email:<a href="mailto:@Html.DisplayFor(modelItem => item.GroupSet.MonitorEmail)">@Html.DisplayFor(modelItem => item.GroupSet.MonitorEmail)</a></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Annotation) |
+                            @Html.ActionLink("Изменить", "Edit", new { id = item.ScheduleId })
+                        </td>
+                    </tr>
+                    list++;
+                }
+            </table>
+        </div>
+
+    </div>
+}
+
+<script>
+
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".detailsID").click(function (e) {
+
+            e.preventDefault();
+            $.get(this.href, function (data) {
+                $('#dialogContent').html(data);
+                $('#modDialog').modal('show');
+            });
+        });
+    });
+
+    var show;
+    function hidetxt(type) {
+        param = document.getElementById(type);
+        if (param.style.display == "none") {
+            if (show) show.style.display = "none";
+            param.style.display = "block";
+            show = param;
+        } else param.style.display = "none"
+    }
+</script>

@@ -1,7 +1,7 @@
 ﻿@model ScheduleMVC_Update.Models.ScheduleMainSet
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Изменить";
 }
 
 
@@ -19,91 +19,82 @@
         @Html.HiddenFor(model => model.ScheduleId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DisciplineDisciplineId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DisciplineDisciplineId, "Дисциплина", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("DisciplineDisciplineId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("DisciplineDisciplineId", null, htmlAttributes: new { @class = "form-control selectpicker", data_live_search = "true", title = "Выберите дисциплину...", data_width = "280px", data_size = "6" })
                 @Html.ValidationMessageFor(model => model.DisciplineDisciplineId, "", new { @class = "text-danger" })
-                <p>*Создать новую <a href="http://scheduleeacu.azurewebsites.net/disciplines">дисциплину</a></p>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LecturerLecturerId, "Преподаватель", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LecturerLecturerId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("LecturerLecturerId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("LecturerLecturerId", null, htmlAttributes: new { @class = "form-control selectpicker", data_live_search = "true", title = "Выберите преподавателя...", data_width = "280px" })
                 @Html.ValidationMessageFor(model => model.LecturerLecturerId, "", new { @class = "text-danger" })
-                <p>*Создать нового <a href="http://scheduleeacu.azurewebsites.net/lecturers">преподавателя</a></p>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GroupGroupId, "Номер группы", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GroupSet.GroupName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.GroupSet.GroupName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("GroupGroupId", null, htmlAttributes: new { @class = "form-control selectpicker", data_live_search = "true", title = "Выберите группу...", data_width = "280px" })
                 @Html.ValidationMessageFor(model => model.GroupGroupId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GroupGroupId, "Факультет", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AuditoryAuditoryId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.GroupSet.DepartmentName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GroupGroupId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AuditoryAuditoryId, "Аудитория", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AuditorySet.AuditoryName, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                @Html.DropDownList("AuditoryAuditoryId", null, htmlAttributes: new { @class = "form-control selectpicker", data_live_search = "true", title = "Выберите аудиторию...", data_width = "280px" })
                 @Html.ValidationMessageFor(model => model.AuditoryAuditoryId, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.PairPairId, "Номер пары", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PairSet.PairNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PairSet.PairNumber, new { htmlAttributes = new { @class = "form-control", type = "number" } })
-                @Html.ValidationMessageFor(model => model.PairPairId, "", new { @class = "text-danger" })
+                @Html.DropDownList("PairPairId", null, htmlAttributes: new { @class = "form-control selectpicker", data_live_search = "true", title = "Выберите номер пары...", data_width = "280px" })
+                @Html.ValidationMessageFor(model => model.PairSet.PairNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PairPairId, "Начало пары", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Annotation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PairSet.PairStart, new { htmlAttributes = new { @class = "form-control", type = "time" } })
-                @Html.ValidationMessageFor(model => model.PairPairId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Annotation, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите аннотацию..." } })
+                @Html.ValidationMessageFor(model => model.Annotation, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PairPairId, "Конец пары", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DaysOfWeek, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PairSet.PairEnd, new { htmlAttributes = new { @class = "form-control", type = "time" } })
-                @Html.ValidationMessageFor(model => model.PairPairId, "", new { @class = "text-danger" })
+                <select id="DaysOfWeek" name="DaysOfWeek" class="form-control">
+                    <option>-1</option>
+                    <option>-2</option>
+                    <option>-3</option>
+                    <option>-4</option>
+                    <option>-5</option>
+                    <option>-6</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.DaysOfWeek, "", new { @class = "text-danger" })
             </div>
         </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Сохранить" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Вернуться к списку", "Index")
 </div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

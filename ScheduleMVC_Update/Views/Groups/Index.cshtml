@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ScheduleMVC_Update.Models.GroupSet>
+
+@{
+    ViewBag.Title = "Список всех групп";
+}
+
+<h2>Список всех групп</h2>
+
+<a href="@Url.Action("Index", "Schedule")" class="btn btn-default">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>  Вернуться на главную
+</a>
+
+<p>
+    <br />
+    <br />
+    @Html.ActionLink("Добавить новую группу", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonitorOfTheTeam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonitorTel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonitorEmail)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MonitorOfTheTeam)
+                </td>
+                <td>
+                    <a href="tel:@Html.DisplayFor(modelItem => item.MonitorTel)">@Html.DisplayFor(modelItem => item.MonitorTel)</a>
+                </td>
+                <td>
+                    <a href="mailto:@Html.DisplayFor(modelItem => item.MonitorEmail)">@Html.DisplayFor(modelItem => item.MonitorEmail)</a>
+                </td>
+                <td>
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.GroupId }) |
+                    @Html.ActionLink("Подробнее", "Details", new { id = item.GroupId }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.GroupId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
